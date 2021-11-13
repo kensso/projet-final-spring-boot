@@ -2,17 +2,30 @@ package model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 @Entity
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
+@DynamicUpdate
+@Table(name="product")
 public class Product implements Serializable{
-	@Id
-	@GeneratedValue
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+	@Column(name = "designation")
 	private String designation;
+	@Column(name = "price")
 	private double price;
+	@Column(name = "quantite")
 	private int quantite;
 	public Product() {
 		super();
